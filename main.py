@@ -1,10 +1,4 @@
-def   main():
-
-
-
-
-
-
+def main():
     print("Hello from practical-deep-learning-for-coders! - ruff checked")
 
 
