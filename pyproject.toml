@@ -7,8 +7,6 @@ requires-python = ">=3.12"
 dependencies = [
     "ddgs>=9.5.1",
     "fastai>=2.8.2",
-    "pre-commit>=4.2.0",
-    "ruff>=0.12.7",
     "torch>=2.7.1",
     "torchvision>=0.22.1",
 ]
@@ -29,7 +27,15 @@ torchvision = [
 [dependency-groups]
 dev = [
     "ipykernel>=6.30.0",
+    "mypy>=1.17.1",
+    "pre-commit>=4.2.0",
+    "ruff>=0.12.7",
 ]
 
 [tool.ruff]
 exclude = ["*.ipynb"]
+
+[tool.mypy]
+explicit_package_bases = true
+mypy_path = "src"
+ignore_missing_imports = true
