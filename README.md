@@ -14,3 +14,6 @@ https://course.fast.ai/
     ```bash
     source .venv/bin/activate
     ```
+
+
+uv run pre-commit autoupdate
