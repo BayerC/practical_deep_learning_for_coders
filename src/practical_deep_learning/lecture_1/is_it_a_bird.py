@@ -1,21 +1,22 @@
-from pathlib import Path
-from ddgs import DDGS
 import time
-from fastcore.all import L
-from fastai.vision.utils import (
-    download_images,
-    resize_images,
-    verify_images,
-    get_image_files,
-)
+from pathlib import Path
+
+from ddgs import DDGS
 from fastai.vision.all import (
+    CategoryBlock,
     DataBlock,
     ImageBlock,
-    CategoryBlock,
     RandomSplitter,
-    parent_label,
     Resize,
+    parent_label,
 )
+from fastai.vision.utils import (
+    download_images,
+    get_image_files,
+    resize_images,
+    verify_images,
+)
+from fastcore.all import L
 
 
 def search_images(keywords: str, max_results: int = 200) -> L:
