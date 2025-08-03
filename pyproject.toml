@@ -55,8 +55,22 @@ ignore = ["E501"]  # line too long
 
 [tool.ruff.format]
 quote-style = "double"
+
 [tool.mypy]
-explicit_package_bases = true
-mypy_path = "src"
-ignore_missing_imports = true
-strict = true
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+extra_checks = true
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_untyped_defs = false
