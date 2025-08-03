@@ -39,3 +39,4 @@ exclude = ["*.ipynb"]
 explicit_package_bases = true
 mypy_path = "src"
 ignore_missing_imports = true
+strict = true

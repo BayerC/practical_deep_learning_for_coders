@@ -18,11 +18,11 @@ from fastai.vision.all import (
 )
 
 
-def search_images(keywords, max_results=200):
+def search_images(keywords: str, max_results: int = 200) -> L:
     return L(DDGS().images(keywords, max_results=max_results)).itemgot("image")
 
 
-def load_data():
+def load_data() -> Path:
     data_path = Path(__file__).parent / "data" / "bird_or_not"
 
     searches = "forest", "bird"
@@ -38,7 +38,7 @@ def load_data():
     return data_path
 
 
-def is_it_a_bird():
+def is_it_a_bird() -> None:
     data_path = load_data()
     print(f"Data loaded from {data_path}")
 
