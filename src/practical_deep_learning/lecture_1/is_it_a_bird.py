@@ -44,7 +44,7 @@ def is_it_a_bird() -> None:
     print(f"Data loaded from {data_path}")
 
     dls = DataBlock(
-        blocks=(ImageBlock, CategoryBlock),
+        blocks=[ImageBlock, CategoryBlock],
         get_items=get_image_files,
         splitter=RandomSplitter(valid_pct=0.2, seed=42),
         get_y=parent_label,
