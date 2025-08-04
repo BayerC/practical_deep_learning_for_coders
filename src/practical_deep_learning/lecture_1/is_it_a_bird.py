@@ -41,7 +41,7 @@ def load_data() -> Path:
 
 def is_it_a_bird() -> None:
     data_path = load_data()
-    print(f"Data loaded from {data_path}")
+    print(f"Data loaded from path: {data_path}")
 
     dls = DataBlock(
         blocks=[ImageBlock, CategoryBlock],

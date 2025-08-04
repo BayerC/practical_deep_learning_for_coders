@@ -22,8 +22,3 @@ repos:
     hooks:
       - id: uv-lock   # Ensures uv.lock up-to-date with pyproject.toml
       - id: uv-export # Keeps requirements.txt synced with uv.lock
-
-  - repo: https://github.com/RobertCraigie/pyright-python
-    rev: v1.1.403  # Use the latest release
-    hooks:
-      - id: pyright
