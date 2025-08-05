@@ -1,7 +1,7 @@
 [project]
 name = "practical-deep-learning-for-coders"
 version = "0.1.0"
-description = "Add your description here"
+description = "High quality software nased on lecture practical-deep-learning-for-coders"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
