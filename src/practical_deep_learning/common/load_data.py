@@ -6,6 +6,7 @@ from fastcore.all import L
 
 
 def search_images(keywords: str, max_results: int = 200) -> L:
+    
     return L(DDGS().images(keywords, max_results=max_results)).itemgot("image")
 
 
