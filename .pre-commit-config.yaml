@@ -28,7 +28,6 @@ repos:
     hooks:
       - id: mypy
         name: "mypy"
-        language: system
         exclude: ^tests/
 
   - repo: local
@@ -36,6 +35,8 @@ repos:
       - id: run-pytest
         name: Run Pytest
         entry: pytest
-        language: system  # assumes pytest is installed in your system or virtualenv
+        language: python
         types: [python]
-        pass_filenames: false  # run pytest on the whole test suite
+        pass_filenames: false
+        additional_dependencies:
+        - pytest

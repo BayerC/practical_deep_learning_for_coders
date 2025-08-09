@@ -1,9 +1,15 @@
 from pathlib import Path
 
+from ddgs import DDGS
+from fastai.vision.utils import download_images
+from fastcore.all import L
 
-def load_data(path: Path) -> None:
-    if path.exists():
-        print("pth exits")
-    else:
-        print(f"Data path {path} does not exist. Please run the data loading script.")
-        return None
+
+def search_images(keywords: str, max_results: int = 200) -> L:
+    return L(DDGS().images(keywords, max_results=max_results)).itemgot("image")
+
+
+def download_images_to_folder(path: Path, search: str) -> None:
+    path.mkdir(parents=True, exist_ok=True)
+
+    download_images(path, urls=search_images(f"{search} photo"))
