@@ -67,8 +67,10 @@ jobs:
           git clone https://hf_token:${HF_TOKEN}@huggingface.co/spaces/Noxem/PracticalDeepLearningForCoders temp-hf-repo
           cd temp-hf-repo
 
-          # Copy the folder from the main repo to the Huggingface repo (overwriting changes)
-          rsync -av --delete ../src/practical_deep_learning/deployment/PracticalDeepLearningForCoders/ ./
+          # Copy the folder from the main repo to the Huggingface repo (excluding .git)
+          rsync -av --delete --exclude '.git' ../src/practical_deep_learning/deployment/PracticalDeepLearningForCoders/ ./
+
+
 
           # Stage changes
           git add .
