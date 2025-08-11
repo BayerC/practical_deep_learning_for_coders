@@ -67,6 +67,10 @@ jobs:
           git clone https://hf_token:${HF_TOKEN}@huggingface.co/spaces/Noxem/PracticalDeepLearningForCoders temp-hf-repo
           cd temp-hf-repo
 
+          # Configure git identity inside Huggingface repo
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
           # Copy the folder from the main repo to the Huggingface repo (excluding .git)
           rsync -av --delete --exclude '.git' ../src/practical_deep_learning/deployment/PracticalDeepLearningForCoders/ ./
 
