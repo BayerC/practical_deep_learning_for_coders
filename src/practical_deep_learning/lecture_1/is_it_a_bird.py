@@ -18,6 +18,8 @@ from fastai.vision.utils import (
 )
 from fastcore.all import L
 
+from practical_deep_learning.common.load_data import download_images_to_folder
+
 
 def search_images(keywords: str, max_results: int = 200) -> L:
     return L(DDGS().images(keywords, max_results=max_results)).itemgot("image")
@@ -55,4 +57,7 @@ def is_it_a_bird() -> None:
 
 
 if __name__ == "__main__":
-    is_it_a_bird()
+    download_images_to_folder(
+        Path(__file__).parent / "data" / "bird_or_not", "bird", 10
+    )
+    # is_it_a_bird()

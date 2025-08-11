@@ -1460,7 +1460,7 @@ wheels = [
 [[package]]
 name = "practical-deep-learning-for-coders"
 version = "0.1.0"
-source = { virtual = "." }
+source = { editable = "." }
 dependencies = [
     { name = "ddgs" },
     { name = "fastai" },
