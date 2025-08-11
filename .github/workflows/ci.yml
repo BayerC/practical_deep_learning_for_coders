@@ -35,3 +35,48 @@ jobs:
 
     - name: Run tests with coverage
       run: uv run pytest --cov=src --cov-report=xml --cov-report=term
+
+  push-folder:
+    # This job only runs if:
+    #  - the previous job succeeds
+    #  - and the push event modified files in the PracticalDeepLearningForCoders folder
+    needs: test
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository (full history for rsync comparison)
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Configure Git user for commits
+      - name: Setup Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      # Sync the PracticalDeepLearningForCoders folder to the Huggingface repo
+      # This uses an HF_TOKEN secret for authentication
+      - name: Sync folder to Huggingface repo
+        env:
+          HF_REPO: https://huggingface.co/spaces/Noxem/PracticalDeepLearningForCoders
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          # Clone Huggingface repo to temporary directory
+          git clone https://hf_token:${HF_TOKEN}@huggingface.co/spaces/Noxem/PracticalDeepLearningForCoders temp-hf-repo
+          cd temp-hf-repo
+
+          # Copy the folder from the main repo to the Huggingface repo (overwriting changes)
+          rsync -av --delete ../src/practical_deep_learning/deployment/PracticalDeepLearningForCoders/ ./
+
+          # Stage changes
+          git add .
+
+          # Commit and push only if there are changes
+          if ! git diff --cached --quiet; then
+            git commit -m "Update PracticalDeepLearningForCoders from main repo"
+            git push origin main
+          else
+            echo "No changes to push"
+          fi
