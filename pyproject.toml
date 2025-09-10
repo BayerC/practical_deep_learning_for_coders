@@ -26,6 +26,7 @@ torchvision = [
 
 [dependency-groups]
 dev = [
+    "gradio>=5.44.1",
     "ipykernel>=6.30.0",
     "mypy>=1.17.1",
     "pre-commit>=4.2.0",
